@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"] | City Tech Consultants</title>
+    @if (ViewData["Description"] != null)
+    {
+        <meta name="description" content="@ViewData["Description"]" />
+    }
+    <link rel="stylesheet" href="/themekit/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="/themekit/css/style.css">
+    <!--Home page-->
+    <link rel="stylesheet" href="/themekit/css/glide.css">
+    <link rel="stylesheet" href="/themekit/css/magnific-popup.css">
+    <link rel="stylesheet" href="/themekit/css/content-box.css"><!--always needed-->
+    <link rel="stylesheet" href="/themekit/css/media-box.css">
+    <!--Home page end-->
+    <link rel="stylesheet" href="/themekit/css/skin.css">
+    <link rel="stylesheet" href="/themekit/media/icons/iconsmind/line-icons.min.css">
+
+    
+
+    <!--custom-->
+    <link rel="stylesheet" href="/css/site.css" asp-append-version="true" />
+    <style>
+        body, textarea {
+            font-weight: 600;
+        }
+    </style>
+    @await RenderSectionAsync("Styles", required: false)
+    
+    
+</head>
+<body>
+    <div id="preloader"></div>
+    <div class="cookies-eu-banner hidden">
+        By clicking ”OK”, you agree to the storing of cookies on your device to
+        enhance site navigation, analyse site usage, and improve marketing.
+        <button>OK</button>
+    </div>
+    <!-- NAVIGATION MENU -->
+    <nav class="menu-top-logo menu-fixed" data-menu-anima="fade-in">
+    <div class="container">
+        <div class="menu-brand">
+            <a href="/">
+                <img class="logo-default scroll-hide" src="/images/logo.png" alt="logo" />
+                <img class="logo-retina scroll-hide" src="/images/logo.png" alt="logo" />
+                <img class="logo-default scroll-show" src="/images/logo.png" alt="logo" />
+                <img class="logo-retina scroll-show" src="/images/logo.png" alt="logo" />
+            </a>
+        </div>
+        <i class="menu-btn"></i>
+        <div class="menu-cnt">
+            <ul id="main-menu">
+                <li>
+                    <a href="/">Home</a>
+                </li>
+                <li class="dropdown">
+                    <a>About</a>
+                    <ul>
+                        <li><a href="/about-us">About us</a></li>
+                        <li><a href="/processes">Processes</a></li>
+                        <li><a href="/careers">Careers</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a>Services</a>
+                    <ul>
+                        
+                        <partial name="_ServicesMenu" />
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="/contact-us">Contact us</a>
+                </li>
+            </ul>
+            <div class="menu-right">
+                <div class="menu-custom-area" style="text-align:right;">
+                    <strong>Your next <br/>consulting partner</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <!-- HEADER -->
+    @await RenderSectionAsync("Header", required: false)
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- SECTIONS -->
+        @RenderBody()
+    </main>
+    <!-- FOOTER -->
+
+    
+<footer class="light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <h3>City Tech Consultants</h3>
+                <p>Your next consulting partner.</p>
+                <div class="icon-links icon-social icon-links-grid social-colors">
+                    <p></p>
+                    <a class="linkedin" target="_blank" href="https://www.linkedin.com/company/city-tech-consultants?original_referer=website"><i class="icon-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <ul class="icon-list icon-line">
+                    <li><a href="/about-us">About us</a></li>
+                    <li><a href="/processes">Processes</a></li>
+                    <li><a href="/careers">Careers</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3">
+                <ul class="icon-list icon-line">
+                    
+                    <partial name="_ServicesMenu" />
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <ul class="text-list text-list-line">
+                    <li><b>Email</b><hr /><p><a href="mailto:info@citytechconsultants.com">info@citytechconsultants.com</a></p></li>
+                    <li><b>Phone</b><hr /><p><a href="tel:+447846116266">(+44) 78461 16266</a></p></li>
+                    <li><b></b><p><a href="tel:+447957505719">(+44) 79575 05719</a></p></li>
+                    <li><a href="/contact-us">Contact us</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="footer-bar">
+        <div class="container">
+            <span>© @DateTime.Now.Year City Tech Consultants Ltd.</span>
+            <span><a href="/privacy">Privacy policy</a></span>
+        </div>
+    </div>
+</footer>
+
+
+
+
+    <script src="/themekit/scripts/jquery.min.js"></script>
+    <script src="/themekit/scripts/main.js"></script>
+
+    <!--Home page-->
+    <script src="/themekit/scripts/parallax.min.js"></script>
+    <script src="/themekit/scripts/glide.min.js"></script>
+    <script src="/themekit/scripts/magnific-popup.min.js"></script>
+    <script src="/themekit/scripts/tab-accordion.js"></script>
+    <script src="/themekit/scripts/progress.js"></script>
+    <script src="/themekit/scripts/imagesloaded.min.js"></script>
+    <script src="/themekit/scripts/custom.js"></script>
+    <!--home page end-->
+    <script src="/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WZEF25DYRC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-WZEF25DYRC');
+    </script>
+
+
+</body>
+</html>

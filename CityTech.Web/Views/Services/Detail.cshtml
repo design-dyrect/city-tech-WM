@@ -1,0 +1,118 @@
+@model ServiceDetail
+@{
+    ViewData["Title"] = Model.Title;
+    ViewData["Description"] = Model.Summary;
+    var half = (Model.Receives.Count + 1) / 2;
+}
+
+@section Header {
+    <header class="header-image ken-burn-center light" data-parallax="true"
+            data-natural-height="500" data-natural-width="1920" data-bleed="0"
+            data-image-src="/images/header.jpg" data-offset="0">
+        <div class="container">
+            <h1>@Model.Title</h1>
+
+            <ol class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="javascript:void(0);">@Model.Title</a></li>
+            </ol>
+        </div>
+    </header>
+}
+
+<section class="section-base section-color">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="fixed-area" data-offset="80">
+                    <div class="menu-inner menu-inner-vertical boxed-area">
+                        <ul>
+                            <partial name="_ServicesMenu" />
+                        </ul>
+                    </div>
+                </div>
+                <hr class="space-sm">
+                <partial name="_NeedMoreInfo" />
+            </div>
+            <div class="col-lg-8">
+                <hr class="space visible-md" />
+                <h3>Service details</h3>
+                <p>
+                    @Html.Raw(Model.Details)
+                </p>
+                @if (Model.Steps.Any())
+                {
+                    <hr class="space" />
+                    <h3>Our process</h3>
+                    <hr class="space-sm" />
+                    <div class="box-steps">
+                        @for (var i = 0; i < Model.Steps.Count; i++)
+                        {
+                            <div class="step-item">
+                                <span>@(i + 1)</span>
+                                <div class="content">
+                                    <h3>@Model.Steps[i].Title</h3>
+                                    <div>
+                                        <p>
+                                            @Model.Steps[i].Text
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+
+                @if (Model.Receives.Any())
+                {
+                    <hr class="space" />
+                    <h3>What you receive?</h3>
+                    <hr class="space-sm">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="text-list text-list-base">
+                                @foreach (var item in Model.Receives.Take(half))
+                                {
+                                    <li>
+                                        <h3>@item.Title</h3>
+                                        <p>@item.Text</p>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="text-list text-list-base">
+                                @foreach (var item in Model.Receives.Skip(half))
+                                {
+                                    <li>
+                                        <h3>@item.Title</h3>
+                                        <p>@item.Text</p>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }
+
+                @if (Model.Faqs.Any())
+                {
+                    <hr class="space" />
+                    <h3>Frequently asked questions</h3>
+                    <hr class="space-sm">
+                    <ul class="accordion-list" data-open="1">
+                        @foreach (var faq in Model.Faqs)
+                        {
+                            <li>
+                                <a href="javascript:void(0);">@faq.Title</a>
+                                <div class="content">
+                                    <p>@faq.Text</p>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>

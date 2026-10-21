@@ -1,0 +1,10 @@
+@{
+    var current = ViewContext.RouteData.Values["action"]?.ToString();
+    string Active(string action) => current == action && ViewContext.RouteData.Values["controller"]?.ToString() == "Services" ? "active" : "";
+}
+
+    <li class="@Active("AppDevelopment")"><a asp-controller="Services" asp-action="AppDevelopment">App Development</a></li>
+    <li class="@Active("WebDevelopment")"><a asp-controller="Services" asp-action="WebDevelopment">Web Development</a></li>
+    <li class="@Active("CostManagement")"><a asp-controller="Services" asp-action="CostManagement">Cost Management</a></li>
+    <li class="@Active("Maintainance")"><a asp-controller="Services" asp-action="Maintainance">Maintenance &amp; Support</a></li>
+    <li class="@Active("WarrantyManagement")"><a asp-controller="Services" asp-action="WarrantyManagement">Warranty Management</a></li>
